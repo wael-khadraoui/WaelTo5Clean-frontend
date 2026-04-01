@@ -1,0 +1,57 @@
+.mission-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: #34C759;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.mission-timer.timer-orange {
+  background: #FF9500;
+  box-shadow: 0 2px 8px rgba(255, 149, 0, 0.3);
+}
+
+.mission-timer.timer-red {
+  background: #FF3B30;
+  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+  animation: timer-blink 1s infinite;
+}
+
+.mission-timer.timer-exceeded {
+  background: #FF3B30;
+  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.3);
+  animation: timer-blink 1s infinite;
+}
+
+@keyframes timer-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.timer-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.timer-time {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.mission-timer.timer-completed {
+  background: #8E8E93;
+  box-shadow: 0 2px 8px rgba(142, 142, 147, 0.3);
+}
+

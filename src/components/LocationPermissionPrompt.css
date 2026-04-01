@@ -1,0 +1,135 @@
+.location-permission-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.location-permission-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.location-permission-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.location-permission-modal h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.location-permission-modal p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.location-permission-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.location-btn {
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+}
+
+.location-btn.primary {
+  background: #667eea;
+  color: white;
+}
+
+.location-btn.primary:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+}
+
+.location-btn.secondary {
+  background: #f5f5f5;
+  color: #333;
+  border: 2px solid #e0e0e0;
+}
+
+.location-btn.secondary:hover {
+  background: #e0e0e0;
+}
+
+.location-btn.link {
+  background: transparent;
+  color: #667eea;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.location-btn.link:hover {
+  color: #5568d3;
+}
+
+.location-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.location-permission-instructions {
+  text-align: left;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.location-permission-instructions p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.location-permission-instructions ol {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.location-permission-instructions li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .location-permission-modal {
+    padding: 20px;
+  }
+  
+  .location-permission-icon {
+    font-size: 48px;
+  }
+  
+  .location-permission-modal h2 {
+    font-size: 20px;
+  }
+}
+

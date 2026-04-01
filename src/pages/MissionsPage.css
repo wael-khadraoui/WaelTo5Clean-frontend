@@ -1,0 +1,1931 @@
+.missions-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: visible;
+}
+
+/* Price Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.price-modal {
+  max-width: 600px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.price-modal-info {
+  margin-bottom: 20px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.price-modal-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.price-modal-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.price-modal-item label {
+  flex: 1;
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.price-modal-item input {
+  flex: 0 0 120px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.price-modal-item input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.price-modal-item span {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.modal-button.secondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.modal-button.secondary:hover {
+  background: #e5e7eb;
+}
+
+.modal-button.primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.modal-button.primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.modal-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.missions-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #666;
+}
+
+.missions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.archive-tab {
+  margin-left: auto;
+}
+
+.missions-filter-bar {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.missions-filter {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-tab {
+  min-width: 80px;
+}
+
+.missions-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.missions-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.missions-tab {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  background: #f9fafb;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 80px;
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.tab-label {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.missions-tab.active {
+  background: #667eea;
+  color: #fff;
+  border-color: #667eea;
+}
+
+.tab-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.missions-content {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  padding: 0;
+  overflow: visible;
+}
+
+
+.tab-badge {
+  background: #ff3b30;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1.4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: -4px;
+  right: -8px;
+}
+
+.missions-tab.active .tab-badge {
+  background: #ff3b30;
+  color: white;
+}
+
+.missions-header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mission-orders-button {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+  padding: 0;
+}
+
+.mission-orders-button:hover {
+  background: #5568d3;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mission-orders-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.missions-header h1 {
+  font-size: 32px;
+  color: #333;
+  margin: 0;
+}
+
+.back-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  background: white;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 80px;
+  justify-content: center;
+}
+
+.back-button:hover {
+  background: #f5f5f5;
+  border-color: #667eea;
+  transform: translateX(-2px);
+}
+
+@media (max-width: 768px) {
+  .missions-header h1 {
+    font-size: 24px;
+  }
+  
+  .back-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 60px;
+  }
+}
+
+.refresh-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.refresh-button:hover {
+  background: #5568d3;
+}
+
+.archive-button {
+  background: #667eea;
+}
+
+.archive-button.active {
+  background: #5856D6;
+}
+
+.archive-button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-size: 18px;
+}
+
+.missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.mission-card-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+  overflow: visible;
+}
+
+.mission-card-tag {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  z-index: 10;
+}
+
+.mission-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mission-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mission-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.mission-header h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.mission-roadmap {
+  width: 100%;
+  padding: 24px;
+  margin-bottom: 0;
+  background: white;
+}
+
+.roadmap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.roadmap-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.delivery-guy-missions .mission-roadmap {
+  background: white;
+  border-top: 1px solid #f0f0f0;
+}
+
+.roadmap-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 0;
+}
+
+.roadmap-item-skipped {
+  opacity: 0.6;
+  background: #fff3e0;
+}
+
+.roadmap-item-skipped .roadmap-timeline-icon {
+  background: #FF9800;
+  color: white;
+}
+
+.roadmap-timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.roadmap-item-with-timer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.roadmap-timeline-item:last-child {
+  align-items: center;
+}
+
+.roadmap-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.roadmap-timeline-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.roadmap-icon-you {
+  background: #E3F2FD;
+  color: #1976D2;
+}
+
+.roadmap-icon-pickup {
+  background: #FFEBEE;
+  color: #D32F2F;
+}
+
+.roadmap-icon-delivery {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.store-item-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff6b00;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 8px;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.roadmap-expand-stores {
+  margin: 8px 0;
+  padding: 8px 12px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #667eea;
+  transition: all 0.2s;
+  border: 1px dashed #cbd5e1;
+}
+
+.roadmap-expand-stores:hover {
+  background: #e5e7eb;
+  border-color: #667eea;
+  color: #764ba2;
+}
+
+.roadmap-checkmark {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #34C759;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+}
+
+.roadmap-timeline-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.roadmap-timeline-item:first-child .roadmap-timeline-content {
+  padding-top: 12px;
+  justify-content: center;
+}
+
+.roadmap-delivery-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.roadmap-timeline-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.roadmap-timeline-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  flex: 1;
+}
+
+.roadmap-call-restaurant-button {
+  background: #34C759;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.roadmap-call-restaurant-button:hover {
+  background: #2fb04a;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(52, 199, 89, 0.3);
+}
+
+.roadmap-call-restaurant-button:active {
+  transform: scale(0.95);
+}
+
+.roadmap-timeline-address {
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.roadmap-address-delivery {
+  color: #2E7D32;
+  font-weight: 500;
+}
+
+.roadmap-call-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #34C759;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(52, 199, 89, 0.3);
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.roadmap-call-button:hover {
+  background: #30D158;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(52, 199, 89, 0.4);
+}
+
+.roadmap-call-button:active {
+  transform: scale(0.95);
+}
+
+.roadmap-call-button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.roadmap-timeline-time {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.roadmap-timeline-connector {
+  width: 2px;
+  min-height: 50px;
+  background: #e5e7eb;
+  margin-left: 24px;
+  margin-bottom: 4px;
+  position: relative;
+  border-left: 2px dashed #9ca3af;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roadmap-connector-time {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.roadmap-connector-delivery {
+  position: relative;
+}
+
+.roadmap-connector-dot {
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #9ca3af;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px #e5e7eb;
+}
+
+.delivery-guy-missions .mission-card-unassigned .roadmap-timeline-connector {
+  border-left-color: #f5576c;
+}
+
+.delivery-guy-missions .mission-card-unassigned .roadmap-connector-dot {
+  background: #f5576c;
+  box-shadow: 0 0 0 2px #fff5f7;
+}
+
+.delivery-guy-missions .mission-card-pending .roadmap-timeline-connector,
+.delivery-guy-missions .mission-card-assigned .roadmap-timeline-connector {
+  border-left-color: #667eea;
+}
+
+.delivery-guy-missions .mission-card-pending .roadmap-connector-dot,
+.delivery-guy-missions .mission-card-assigned .roadmap-connector-dot {
+  background: #667eea;
+  box-shadow: 0 0 0 2px #f3f4ff;
+}
+
+.delivery-guy-missions .mission-card-in_progress .roadmap-timeline-connector {
+  border-left-color: #4facfe;
+}
+
+.delivery-guy-missions .mission-card-in_progress .roadmap-connector-dot {
+  background: #4facfe;
+  box-shadow: 0 0 0 2px #eff6ff;
+}
+
+.delivery-guy-missions .mission-card-completed .roadmap-timeline-connector {
+  border-left-color: #34C759;
+}
+
+.delivery-guy-missions .mission-card-completed .roadmap-connector-dot {
+  background: #34C759;
+  box-shadow: 0 0 0 2px #f0fdf4;
+}
+
+.roadmap-placeholder {
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.address-section {
+  margin-bottom: 12px;
+}
+
+.address-section strong {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.address-section p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.mission-order-summary {
+  padding: 16px 24px;
+  background: #f9fafb;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-summary-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.order-summary-value {
+  font-size: 16px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.mission-date {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 12px;
+  text-align: right;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.mission-points {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 8px;
+  text-align: right;
+  float: right;
+  clear: right;
+}
+
+.mission-points.points-positive {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.mission-points.points-negative {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.mission-distance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #555;
+  margin: 8px 0;
+}
+
+.mission-distance-row strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.mission-route-button {
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mission-route-button.route-full {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.mission-route-button.route-delivery-only {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.mission-route-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mission-route-button:active {
+  transform: translateY(0);
+}
+
+.mission-route-button svg {
+  flex-shrink: 0;
+}
+
+.unassigned-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FF9500 0%, #FF6B00 100%);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: pulse 2s infinite;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.mission-expanded {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #555;
+}
+
+.mission-orders-detail {
+  margin-bottom: 16px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.orders-detail-header {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-mission-id-header {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 600;
+  background: #e5e7eb;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.orders-detail-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.orders-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-mission-info-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-mission-id {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 600;
+  background: #e5e7eb;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.order-client-name {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.mission-expanded-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Action Buttons Container - Always visible under "You" */
+.mission-action-buttons-container {
+  display: flex;
+  gap: 0;
+  margin-top: 12px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mission-action-button-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 70px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+}
+
+.mission-action-button-icon:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mission-action-button-icon:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.mission-action-button-icon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mission-action-button-icon.pickup {
+  border-color: #FF9500;
+  background: linear-gradient(135deg, #FFE5CC 0%, #FFD4A3 100%);
+}
+
+.mission-action-button-icon.pickup:hover:not(:disabled) {
+  background: linear-gradient(135deg, #FFD4A3 0%, #FFC080 100%);
+}
+
+.mission-action-button-icon.primary {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
+}
+
+.mission-action-button-icon.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #C7D2FE 0%, #A5B4FC 100%);
+}
+
+.mission-action-button-icon.success {
+  border-color: #34C759;
+  background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+}
+
+.mission-action-button-icon.success:hover:not(:disabled) {
+  background: linear-gradient(135deg, #A7F3D0 0%, #6EE7B7 100%);
+}
+
+.mission-action-button-icon.arrival {
+  border-color: #007AFF;
+  background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+}
+
+.mission-action-button-icon.arrival:hover:not(:disabled) {
+  background: linear-gradient(135deg, #BFDBFE 0%, #93C5FD 100%);
+}
+
+.action-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: currentColor;
+}
+
+.action-button-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.action-button-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+
+.action-button-subtext {
+  font-size: 9px;
+  font-weight: 500;
+  color: #6b7280;
+  opacity: 0.8;
+  line-height: 1;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mission-action-button-icon.pickup .action-button-icon {
+  color: #FF6B00;
+}
+
+.mission-action-button-icon.primary .action-button-icon {
+  color: #667eea;
+}
+
+.mission-action-button-icon.success .action-button-icon {
+  color: #34C759;
+}
+
+.mission-action-button-icon.arrival .action-button-icon {
+  color: #007AFF;
+}
+
+.mission-action-button-icon.route {
+  border-color: #8B5CF6;
+  background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%);
+}
+
+.mission-action-button-icon.route:hover:not(:disabled) {
+  background: linear-gradient(135deg, #DDD6FE 0%, #C4B5FD 100%);
+}
+
+.mission-action-button-icon.route.route-delivery-only {
+  border-color: #EC4899;
+  background: linear-gradient(135deg, #FCE7F3 0%, #FBCFE8 100%);
+}
+
+.mission-action-button-icon.route.route-delivery-only:hover:not(:disabled) {
+  background: linear-gradient(135deg, #FBCFE8 0%, #F9A8D4 100%);
+}
+
+.mission-action-button-icon.route .action-button-icon {
+  color: #7C3AED;
+}
+
+.mission-action-button-icon.route.route-delivery-only .action-button-icon {
+  color: #DB2777;
+}
+
+.mission-action-button-icon.route.route-stores-only {
+  border-color: #10B981;
+  background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+}
+
+.mission-action-button-icon.route.route-stores-only:hover:not(:disabled) {
+  background: linear-gradient(135deg, #A7F3D0 0%, #6EE7B7 100%);
+}
+
+.mission-action-button-icon.route.route-stores-only .action-button-icon {
+  color: #059669;
+}
+
+.mission-action-button-icon.route.disabled {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mission-action-button-icon.route.disabled .action-button-icon {
+  color: #9ca3af;
+}
+
+.mission-action-button-icon.route.disabled .action-button-text {
+  color: #9ca3af;
+}
+
+.mission-action-button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.mission-action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mission-action-button:active {
+  transform: translateY(0);
+}
+
+.mission-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mission-action-button.pickup {
+  background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
+  color: #fff;
+}
+
+.mission-action-button.primary {
+  background: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
+  color: #fff;
+}
+
+.mission-action-button.success {
+  background: linear-gradient(135deg, #34c759 0%, #28a745 100%);
+  color: #fff;
+}
+
+.mission-action-button.arrival {
+  background: linear-gradient(135deg, #0A84FF 0%, #0066cc 100%);
+  color: #fff;
+}
+
+.mission-action-button svg {
+  flex-shrink: 0;
+}
+
+/* Orders Board Styles */
+.orders-board-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.orders-board {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.orders-board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f9fafb;
+}
+
+.orders-board-header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+}
+
+.orders-board-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.orders-board-close:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.orders-board-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.orders-board-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-size: 16px;
+}
+
+.order-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.order-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-mission-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-mission-id {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+}
+
+.order-client-name {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.order-status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.order-items-list {
+  margin-bottom: 12px;
+}
+
+.order-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.order-item-name {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  flex: 1;
+}
+
+.order-item-price {
+  font-size: 14px;
+  color: #667eea;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+.order-item-description {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  font-style: italic;
+  width: 100%;
+}
+
+.order-breakdown {
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+  margin-bottom: 8px;
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.order-line span:first-child {
+  font-weight: 500;
+}
+
+.order-line span:last-child {
+  color: #333;
+}
+
+.order-total {
+  padding-top: 12px;
+  border-top: 2px solid #e0e0e0;
+  text-align: right;
+  font-size: 16px;
+  color: #333;
+}
+
+.order-total strong {
+  color: #667eea;
+}
+
+.order-actions {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.call-client-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: #34C759;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(52, 199, 89, 0.2);
+}
+
+.call-client-button:hover {
+  background: #30D158;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(52, 199, 89, 0.3);
+}
+
+.call-client-button:active {
+  transform: translateY(0);
+}
+
+.call-client-button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Modern Delivery Guy Missions Design */
+.delivery-guy-missions {
+  padding: 0;
+  max-width: 1400px;
+}
+
+.delivery-guy-missions .modern-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 0;
+  margin-bottom: 0;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.delivery-guy-missions .modern-header h1 {
+  color: white;
+}
+
+.delivery-guy-missions .modern-header .back-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.delivery-guy-missions .modern-header .back-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.delivery-guy-missions .modern-tabs {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 6px;
+  border-radius: 12px;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.delivery-guy-missions .modern-tabs .missions-tab {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 10px 20px;
+}
+
+.delivery-guy-missions .modern-tabs .missions-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.delivery-guy-missions .modern-tabs .missions-tab.active {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-guy-missions .modern-tabs .missions-tab.active .tab-badge {
+  background: #ff3b30;
+  color: white;
+}
+
+.delivery-guy-missions .missions-content {
+  padding: 30px;
+  background: #f5f7fa;
+  min-height: calc(100vh - 200px);
+}
+
+.delivery-guy-missions .mission-card {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.delivery-guy-missions .mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+/* Unassigned missions - Pink accent */
+.delivery-guy-missions .mission-card-unassigned::before {
+  background: #FF9500;
+}
+
+/* Pending missions - Orange accent */
+.delivery-guy-missions .mission-card-pending::before {
+  background: #FF9500;
+}
+
+/* Assigned missions - Blue accent */
+.delivery-guy-missions .mission-card-assigned::before {
+  background: #007AFF;
+}
+
+/* In progress missions - Purple accent */
+.delivery-guy-missions .mission-card-in_progress::before {
+  background: #5856D6;
+}
+
+/* Completed missions - Green accent */
+.delivery-guy-missions .mission-card-completed::before {
+  background: #34C759;
+}
+
+/* Cancelled missions - Red accent */
+.delivery-guy-missions .mission-card-cancelled::before {
+  background: #FF3B30;
+}
+
+.delivery-guy-missions .mission-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.delivery-guy-missions .mission-header {
+  padding: 20px 24px 16px;
+  margin-bottom: 0;
+}
+
+.delivery-guy-missions .address-section {
+  padding: 0 24px 12px;
+  margin-bottom: 0;
+}
+
+.delivery-guy-missions .address-section strong {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.delivery-guy-missions .address-section p {
+  font-size: 15px;
+  color: #1f2937;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.delivery-guy-missions .mission-order-summary {
+  padding: 16px 24px;
+  background: #f9fafb;
+  border-top: 1px solid #f0f0f0;
+}
+
+.delivery-guy-missions .mission-date {
+  padding: 0 24px 0;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 12px;
+  text-align: right;
+}
+
+.delivery-guy-missions .mission-expanded {
+  padding: 0 24px 20px;
+  margin-top: 0;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 16px;
+}
+
+.delivery-guy-missions .mission-card-wrapper {
+  margin-bottom: 24px;
+}
+
+.delivery-guy-missions .missions-grid {
+  gap: 24px;
+}
+
+.delivery-guy-missions .mission-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.delivery-guy-missions .mission-route-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.delivery-guy-missions .mission-route-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.delivery-guy-missions .mission-action-button {
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.delivery-guy-missions .mission-action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.delivery-guy-missions .empty-state {
+  background: white;
+  border-radius: 16px;
+  padding: 80px 20px;
+  color: #999;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Restaurant expandable sections */
+.order-restaurants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.order-restaurant-section {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.order-restaurant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background: white;
+}
+
+.order-restaurant-header:hover {
+  background: #f5f5f5;
+}
+
+.order-restaurant-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+}
+
+.restaurant-name-text {
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+}
+
+.restaurant-total {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 15px;
+}
+
+.restaurant-expand-icon {
+  transition: transform 0.2s;
+  color: #666;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.restaurant-expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.order-restaurant-items {
+  padding: 12px 16px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .orders-board {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 16px 16px 0 0;
+    margin-top: auto;
+  }
+
+  .orders-board-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .orders-board-header {
+    padding: 16px;
+  }
+
+  .orders-board-header h2 {
+    font-size: 20px;
+  }
+
+  .orders-board-content {
+    padding: 16px;
+  }
+
+  .order-card {
+    padding: 12px;
+  }
+
+  .order-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .order-status-badge {
+    align-self: flex-end;
+  }
+
+  .orders-board-button {
+    padding: 8px;
+  }
+
+  .orders-board-button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .delivery-guy-missions .missions-content {
+    padding: 20px;
+  }
+
+  .delivery-guy-missions .modern-header {
+    padding: 20px;
+  }
+}
+

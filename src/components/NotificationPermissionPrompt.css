@@ -1,0 +1,96 @@
+.notification-permission-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.notification-permission-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.notification-permission-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.notification-permission-modal h2 {
+  margin: 0 0 12px 0;
+  color: #1a202c;
+  font-size: 24px;
+}
+
+.notification-permission-modal p {
+  margin: 0 0 24px 0;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.notification-permission-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.notification-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.notification-btn.primary {
+  background: #667eea;
+  color: white;
+}
+
+.notification-btn.primary:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.notification-btn.secondary {
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.notification-btn.secondary:hover {
+  background: #cbd5e0;
+}
+
+.notification-permission-note {
+  font-size: 12px;
+  color: #718096;
+  margin: 0;
+}
+

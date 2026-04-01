@@ -1,0 +1,1168 @@
+/* Mobile-first responsive design */
+.restaurants-container {
+  max-width: 100%;
+  padding: 12px;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.restaurants-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #666;
+}
+
+.restaurants-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.restaurants-header-title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.restaurants-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+.restaurants-header h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.restaurants-count {
+  font-size: 18px;
+  font-weight: 600;
+  color: #667eea;
+  background: #f0f0f5;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.search-results-count {
+  font-size: 14px;
+  color: #999;
+  font-weight: 400;
+}
+
+.restaurants-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.icon-button {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #667eea;
+  transition: all 0.2s;
+  min-width: 60px;
+  min-height: 50px;
+}
+
+.icon-button:hover {
+  background: #f0f0f5;
+}
+
+.icon-button svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.icon-button span {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.back-btn {
+  color: #666;
+}
+
+.add-btn {
+  color: #667eea;
+}
+
+.import-btn {
+  color: #667eea;
+}
+
+.delete-all-btn {
+  color: #ff3b30;
+}
+
+.delete-all-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Search Bar */
+.search-bar-container {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.clear-search-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.clear-search-button:hover {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.restaurants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.restaurant-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.restaurant-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.restaurant-info {
+  flex: 1;
+}
+
+.restaurant-info h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.restaurant-address,
+.restaurant-phone,
+.restaurant-location {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.restaurant-location {
+  font-family: monospace;
+  font-size: 12px;
+  color: #999;
+}
+
+.restaurant-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f5;
+}
+
+.action-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-btn svg {
+  flex-shrink: 0;
+}
+
+.commands-btn {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.commands-btn:hover {
+  background: #f9a8d4;
+  color: white;
+}
+
+.edit-btn {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.edit-btn:hover {
+  background: #667eea;
+  color: white;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+  .restaurants-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .restaurants-header {
+    padding: 16px 24px;
+  }
+
+  .restaurants-header h1 {
+    font-size: 28px;
+  }
+
+  .restaurants-count {
+    font-size: 20px;
+  }
+
+  .restaurants-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+  .restaurant-view {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .restaurant-actions {
+    border-top: none;
+    padding-top: 0;
+    flex-direction: column;
+    flex: 0 0 auto;
+    min-width: 120px;
+  }
+
+  .action-btn {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* JSON Import Modal */
+.json-import-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.json-import-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.json-import-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.json-import-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.json-import-header .close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.json-import-header .close-button:hover {
+  background: #f0f0f0;
+}
+
+.json-import-body {
+  padding: 20px;
+}
+
+.json-import-body textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 12px;
+  resize: vertical;
+  min-height: 200px;
+  font-family: monospace;
+}
+
+.json-error {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  font-size: 13px;
+  border: 1px solid #fcc;
+}
+
+.json-import-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.new-restaurant-card {
+  border: 2px dashed #667eea;
+  background: #f9faff;
+}
+
+.restaurant-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.location-section {
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.location-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.location-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.select-location-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 2px solid #667eea;
+  background: white;
+  color: #667eea;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.select-location-button:hover {
+  background: #667eea;
+  color: white;
+}
+
+.location-info {
+  font-size: 12px;
+  color: #666;
+  font-family: monospace;
+  margin-top: 8px;
+  padding: 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.restaurant-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.save-button,
+.cancel-button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-button {
+  background: #34c759;
+  color: white;
+}
+
+.save-button:hover {
+  background: #2fb04a;
+}
+
+.cancel-button {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background: #e0e0e0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-size: 18px;
+  background: white;
+  border-radius: 12px;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.load-more-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 2px solid #667eea;
+  background: white;
+  color: #667eea;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.load-more-button:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Commands Modal - keep existing styles */
+.commands-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 10px;
+}
+
+.commands-modal-content {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.commands-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 2px solid #e0e0e0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.commands-modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.commands-modal-header .close-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.commands-modal-header .close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.commands-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.commands-loading,
+.commands-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-size: 18px;
+}
+
+.commands-calendar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.commands-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.commands-summary {
+  padding: 16px;
+  background: #f9faff;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.commands-summary p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.commands-summary .filtered-info {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.commands-summary .total-purchase {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #34c759;
+  font-weight: 600;
+}
+
+.date-range-picker {
+  padding: 16px;
+  background: #f5f7fa;
+  border-radius: 8px;
+}
+
+.date-range-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.date-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.date-input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.date-input-group input[type="date"] {
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.date-input-group input[type="date"]:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.date-range-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.apply-range-button,
+.clear-filters-button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.apply-range-button {
+  background: #667eea;
+  color: white;
+}
+
+.apply-range-button:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.apply-range-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.clear-filters-button {
+  background: #f5f5f5;
+  color: #333;
+  border: 2px solid #e0e0e0;
+}
+
+.clear-filters-button:hover {
+  background: #e0e0e0;
+}
+
+.calendar-section {
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calendar-nav-button {
+  background: #f5f5f5;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #333;
+}
+
+.calendar-nav-button:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.calendar-month-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  padding: 8px 4px;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  background: white;
+  min-height: 50px;
+}
+
+.calendar-day.empty {
+  border: none;
+  cursor: default;
+  background: transparent;
+}
+
+.calendar-day:hover:not(.empty) {
+  background: #f0f4ff;
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+.calendar-day.has-missions {
+  border-color: #667eea;
+  background: #f9faff;
+}
+
+.calendar-day.selected {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.calendar-day.today {
+  border-color: #f5576c;
+  border-width: 3px;
+}
+
+.calendar-day.today.selected {
+  border-color: #667eea;
+}
+
+.calendar-day-number {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.calendar-day.selected .calendar-day-number {
+  color: white;
+}
+
+.calendar-day-count {
+  font-size: 10px;
+  font-weight: 700;
+  background: #f5576c;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 6px;
+  margin-top: 2px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.calendar-day.selected .calendar-day-count {
+  background: white;
+  color: #667eea;
+}
+
+.calendar-hint {
+  padding: 16px;
+  background: #fff3cd;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  text-align: center;
+}
+
+.calendar-hint p {
+  margin: 0;
+  color: #856404;
+  font-size: 14px;
+}
+
+.commands-missions-list {
+  margin-top: 20px;
+}
+
+.commands-empty-date {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 16px;
+}
+
+.commands-by-date {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.commands-date-group {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.commands-date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.commands-date-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+.commands-count {
+  background: #667eea;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.command-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: #f9faff;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  transition: all 0.2s;
+}
+
+.command-item:hover {
+  background: #f0f4ff;
+  transform: translateX(4px);
+}
+
+.command-time {
+  min-width: 80px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+  padding-top: 2px;
+}
+
+.command-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.command-delivery-guy {
+  font-size: 15px;
+  color: #667eea;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.command-amount {
+  font-size: 15px;
+  color: #333;
+}
+
+.command-items {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.command-items ul {
+  margin: 8px 0 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.command-items li {
+  margin: 8px 0;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.command-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.command-item-row:last-child {
+  border-bottom: none;
+}
+
+.command-item-row .item-name {
+  flex: 1;
+  color: #333;
+  font-size: 14px;
+}
+
+.command-item-row .item-price {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 14px;
+  margin-left: 12px;
+}
+
+@media (max-width: 768px) {
+  .commands-modal-overlay {
+    padding: 0;
+  }
+
+  .commands-modal-content {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+    height: 100vh;
+  }
+
+  .commands-modal-header {
+    padding: 12px 16px;
+  }
+
+  .commands-modal-header h2 {
+    font-size: 18px;
+  }
+
+  .commands-modal-body {
+    padding: 12px;
+    overflow-y: auto;
+  }
+
+  .commands-controls {
+    gap: 12px;
+  }
+
+  .commands-summary {
+    padding: 12px;
+  }
+
+  .commands-summary p {
+    font-size: 14px;
+  }
+
+  .date-range-picker {
+    padding: 12px;
+  }
+
+  .date-range-inputs {
+    gap: 10px;
+  }
+
+  .date-range-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .apply-range-button,
+  .clear-filters-button {
+    width: 100%;
+  }
+
+  .calendar-section {
+    padding: 12px;
+  }
+
+  .calendar-header {
+    margin-bottom: 12px;
+  }
+
+  .calendar-month-title {
+    font-size: 18px;
+  }
+
+  .calendar-nav-button {
+    padding: 6px 12px;
+    font-size: 16px;
+  }
+
+  .calendar-weekday {
+    font-size: 11px;
+    padding: 6px 2px;
+  }
+
+  .calendar-day {
+    min-height: 40px;
+    padding: 2px;
+  }
+
+  .calendar-day-number {
+    font-size: 12px;
+  }
+
+  .calendar-day-count {
+    font-size: 9px;
+    padding: 1px 4px;
+    min-width: 18px;
+  }
+
+  .command-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .command-time {
+    min-width: auto;
+    font-size: 13px;
+  }
+
+  .command-details {
+    gap: 6px;
+  }
+
+  .commands-date-header h3 {
+    font-size: 16px;
+  }
+
+  .commands-count {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+}
