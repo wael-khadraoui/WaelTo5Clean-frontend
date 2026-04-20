@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Security Chatbot - WaelTo5Clean</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Courier New',monospace;background:#0a0a1a;color:#e0e0e0;height:100vh;display:flex;flex-direction:column}
+.header{background:linear-gradient(135deg,#0d1b2a,#1b2838);padding:16px 24px;border-bottom:1px solid #00ff8820;display:flex;align-items:center;gap:12px}
+.logo{width:40px;height:40px;background:linear-gradient(135deg,#00ff88,#00b4d8);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold;color:#0a0a1a}
+.title{font-size:16px;font-weight:bold;color:#00ff88}
+.subtitle{font-size:11px;color:#00ff8880}
+.dot{width:8px;height:8px;border-radius:50%;background:#00ff88;animation:pulse 2s infinite}
+.messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px}
+.msg-user{align-self:flex-end;background:linear-gradient(135deg,#00b4d8,#0077b6);border-radius:16px 16px 4px 16px;padding:12px 16px;max-width:70%;font-size:13px;color:white}
+.msg-bot{align-self:flex-start;background:#0d1b2a;border:1px solid #00ff8820;border-radius:16px 16px 16px 4px;padding:16px;max-width:85%}
+.msg-title{font-size:15px;font-weight:bold;color:#00ff88;margin-bottom:10px}
+.msg-code{background:#0a0a1a;border:1px solid #00ff8815;border-radius:8px;padding:12px;font-size:12px;color:#b0c4de;white-space:pre-wrap;line-height:1.5;margin:8px 0}
+.msg-item{font-size:12px;color:#b0c4de;padding:6px 10px;background:#0a0a1a;border-radius:6px;border-left:3px solid #00b4d8;margin:4px 0}
+.msg-item-ok{border-left-color:#00ff88}
+.severity{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:bold;margin-right:8px}
+.sev-CRITICAL{background:#ff174420;color:#ff1744;border:1px solid #ff174440}
+.sev-HIGH{background:#ff525220;color:#ff5252;border:1px solid #ff525240}
+.sev-MEDIUM{background:#ff980020;color:#ff9800;border:1px solid #ff980040}
+.sev-LOW{background:#4caf5020;color:#4caf50;border:1px solid #4caf5040}
+.sev-INFO{background:#2196f320;color:#2196f3;border:1px solid #2196f340}
+.owasp{font-size:11px;color:#8899aa}
+.suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.suggest-btn{background:#0d1b2a;border:1px solid #00ff8840;border-radius:20px;padding:6px 14px;color:#00ff88;font-size:11px;cursor:pointer;font-family:inherit}
+.suggest-btn:hover{background:#00ff8820;border-color:#00ff88}
+.input-area{padding:16px 20px;border-top:1px solid #00ff8820;background:#0d1b2a;display:flex;gap:10px}
+.input-area input{flex:1;background:#0a0a1a;border:1px solid #00ff8830;border-radius:12px;padding:12px 16px;color:#e0e0e0;font-size:13px;outline:none;font-family:inherit}
+.input-area input:focus{border-color:#00ff88}
+.send-btn{background:linear-gradient(135deg,#00ff88,#00b4d8);border:none;border-radius:12px;padding:12px 24px;color:#0a0a1a;font-weight:bold;font-size:14px;cursor:pointer}
+.typing{display:flex;gap:4px;padding:12px}
+.typing-dot{width:8px;height:8px;border-radius:50%;background:#00ff88;opacity:.4;animation:typing 1s infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes typing{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a1a}
+::-webkit-scrollbar-thumb{background:#00ff8840;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">AI</div>
+<div><div class="title">WaelTo5Clean Security Assistant</div><div class="subtitle">AI-Powered DevSecOps Security Analysis</div></div>
+<div style="margin-left:auto;display:flex;gap:6px;align-items:center"><div class="dot"></div><span style="font-size:11px;color:#00ff8880">Online</span></div>
+</div>
+<div class="messages" id="messages">
+<div><div style="background:#0d1b2a;border:1px solid #00ff8830;border-radius:16px;padding:20px;margin-bottom:12px"><h2 style="font-size:18px;color:#00ff88;margin-bottom:8px">Welcome to Security Assistant</h2><p style="font-size:13px;color:#8899aa;line-height:1.6">Ask me about security vulnerabilities, OWASP Top 10, scan results, or how to fix security issues.</p></div>
+<div class="suggestions" id="init-suggestions"></div></div>
+</div>
+<div class="input-area">
+<input id="input" placeholder="Ask about security vulnerabilities, OWASP, scans..." onkeydown="if(event.key==='Enter')sendMsg()">
+<button class="send-btn" onclick="sendMsg()">Send</button>
+</div>
+<script>
+const KB={"sql injection":{sev:"CRITICAL",fix:"Use parameterized queries.\n\nBefore (vulnerable):\ndb.query(`SELECT * FROM users WHERE id = ${req.params.id}`)\n\nAfter (secure):\ndb.query('SELECT * FROM users WHERE id = $1', [req.params.id])",ow:"A03:2021 - Injection"},"xss":{sev:"HIGH",fix:"Sanitize inputs and use CSP headers.\n\nUse DOMPurify:\nimport DOMPurify from 'dompurify';\nconst clean = DOMPurify.sanitize(userInput);\n\nAdd Helmet CSP:\nhelmet.contentSecurityPolicy({directives:{defaultSrc:[\"'self'\"]}})",ow:"A07:2021 - XSS"},"hardcoded secret":{sev:"CRITICAL",fix:"Never hardcode passwords.\n\nBefore:\nconst password = 'admin123';\n\nAfter (Vault):\nconst password = process.env.DB_PASSWORD;\nvault kv put secret/app password=admin123",ow:"A07:2021 - Misconfiguration"},"jwt":{sev:"HIGH",fix:"Set expiration on JWT tokens.\n\nBefore:\njwt.sign({userId:user.id}, secret)\n\nAfter:\njwt.sign({userId:user.id}, secret, {expiresIn:'1h'})",ow:"A07:2021 - Auth Failures"},"cors":{sev:"HIGH",fix:"No wildcard CORS in production.\n\nBefore:\napp.use(cors({origin:'*'}))\n\nAfter:\napp.use(cors({origin:['https://yourdomain.com']}))",ow:"A05:2021 - Misconfiguration"},"eval":{sev:"CRITICAL",fix:"Never use eval().\n\nBefore:\neval(userInput)\n\nAfter:\nconst data = JSON.parse(userInput);",ow:"A03:2021 - Injection"},"rate limit":{sev:"MEDIUM",fix:"Add rate limiting.\n\nnpm install express-rate-limit\n\nconst limiter = rateLimit({\n  windowMs: 15*60*1000,\n  max: 100\n});\napp.use('/api/', limiter);",ow:"A04:2021 - Insecure Design"},"input validation":{sev:"MEDIUM",fix:"Validate with express-validator.\n\nnpm install express-validator\n\napp.post('/api/user', [\n  body('email').isEmail(),\n  body('password').isLength({min:8})\n], handler);",ow:"A03:2021 - Injection"},"vault":{sev:"INFO",fix:"HashiCorp Vault = Secret Manager.\n\n5 secrets stored:\n- database, dockerhub, github, sonarqube, argocd\n\nIntegrated with Jenkins (withVault)\nIntegrated with Kubernetes\n\nURL: http://localhost:31200\nToken: root",ow:"Secret Management"},"trivy":{sev:"INFO",fix:"Trivy scans Docker images.\n\nResults:\n- 3 HIGH in OS (zlib, openssl)\n- 17 HIGH in Node.js packages\n\ntrivy image wael558/waelto5clean-backend\n\nFix: npm audit fix + update base image",ow:"A06:2021 - Vulnerable Components"},"sonarqube":{sev:"INFO",fix:"SonarQube = SAST Analysis.\n\nBackend: 0 bugs, 0 vulns, 6 smells - PASSED\nFrontend: 44 bugs, 0 vulns - PASSED\n\nURL: http://localhost:9000",ow:"SAST"},"canary":{sev:"INFO",fix:"Canary Deployment:\n1. New version = 1 pod (20% traffic)\n2. Old version = 3 pods (80% traffic)\n3. Monitor errors\n4. If OK: promote\n5. If errors: rollback",ow:"Deployment Security"},"rbac":{sev:"INFO",fix:"RBAC = Role-Based Access Control\n\nViewer: read-only\nDeveloper: read + update\nAdmin: full access\n\nViewer delete → FORBIDDEN",ow:"A01:2021 - Access Control"},"network":{sev:"INFO",fix:"Network Policies = K8s Firewall\n\nFrontend → Backend only (8080)\nBackend → Database only (5432)\nDatabase → Backend only\nFrontend → CANNOT reach Database",ow:"Network Security"},"alert":{sev:"INFO",fix:"Alertmanager → Gmail alerts\n\nAlerts: CrashLooping, ControllerDown\nEmail: khadraouiwaell@gmail.com\n\nGrafana: 3 dashboards",ow:"A09:2021 - Monitoring"},"bcrypt":{sev:"HIGH",fix:"Use bcrypt >= 12 rounds.\n\nconst hash = await bcrypt.hash(password, 12);\nconst match = await bcrypt.compare(password, hash);",ow:"A02:2021 - Crypto Failures"},"https":{sev:"HIGH",fix:"Use HTTPS in production.\n\nNginx:\nserver {\n  listen 443 ssl;\n  ssl_certificate cert.pem;\n}",ow:"A02:2021 - Crypto Failures"},"error handling":{sev:"MEDIUM",fix:"Wrap async in try-catch.\n\ntry {\n  const data = await db.query(...);\n  res.json(data);\n} catch(err) {\n  res.status(500).json({error:'Server error'});\n}",ow:"A09:2021 - Logging"},"path traversal":{sev:"HIGH",fix:"Validate file paths.\n\nconst safe = path.basename(req.params.file);\nconst full = path.join(__dirname,'uploads',safe);",ow:"A01:2021 - Access Control"},"console":{sev:"LOW",fix:"Remove console.log in production.\n\nUse winston:\nconst logger = winston.createLogger(...);\nlogger.info('message');",ow:"A09:2021 - Logging"}};
+const LISTS={pipeline:["1. Checkout - Git clone","2. Vault Fetch - Get secrets","3. SonarQube - SAST analysis","4. OWASP - Dependency check","5. Docker Build - Build image","6. Trivy - Image scan","7. AI Scanner - AI analysis","8. Snyk - Container scan","9. Push DockerHub - via Vault","10. Cleanup"],recommendations:["Helmet.js ✅","Vault secrets ✅","RBAC ✅","Network Policies ✅","Rate limiting","Input validation","HTTPS/TLS","bcrypt >= 12","Account lockout","API versioning"],scan_results:["SonarQube Backend: 0 bugs - PASSED ✅","SonarQube Frontend: 44 bugs - PASSED ✅","Trivy: 20 HIGH vulns","OWASP: 3 vulnerable packages","AI Scanner: 84 issues (1 HIGH, 82 MEDIUM)"],owasp:["A01: Access Control → RBAC ✅","A02: Crypto Failures → HTTPS+bcrypt","A03: Injection → SonarQube ✅","A04: Insecure Design → Rate limit","A05: Misconfiguration → Helmet ✅","A06: Vulnerable Components → Trivy ✅","A07: Auth Failures → JWT expiry","A08: Software Integrity","A09: Logging → Grafana ✅","A10: SSRF → Validation"],fixes:["SQL Injection → Parameterized queries","XSS → Sanitize + CSP","Secrets → Vault ✅","JWT → expiresIn: '1h'","CORS → Restrict origins","Rate limit → express-rate-limit","Validation → express-validator","Logging → winston","Error handling → try-catch","eval() → JSON.parse()"]};
+const SUGG=["What is SQL Injection?","How to fix XSS?","Pipeline stages","OWASP Top 10","Scan results","Recommendations","How does Vault work?","Canary Deployment","What is RBAC?","Fix hardcoded secrets","Trivy results","SonarQube","Network Policies","Alerting"];
+document.getElementById('init-suggestions').innerHTML=SUGG.slice(0,8).map(s=>'<button class="suggest-btn" onclick="sendMsg(\''+s+'\')">'+s+'</button>').join('');
+function findAnswer(q){q=q.toLowerCase();for(const[k,v]of Object.entries(KB))if(q.includes(k))return{t:'v',k,...v};if(q.match(/pipeline|stage|etape/))return{t:'l',title:'Pipeline Stages',d:LISTS.pipeline};if(q.match(/recommand|conseil|best|amelior/))return{t:'l',title:'Recommendations',d:LISTS.recommendations};if(q.match(/scan|rapport|result/))return{t:'l',title:'Scan Results',d:LISTS.scan_results};if(q.match(/owasp|top.?10/))return{t:'l',title:'OWASP Top 10',d:LISTS.owasp};if(q.match(/fix|corriger|solution/))return{t:'l',title:'Quick Fixes',d:LISTS.fixes};return null}
+function sendMsg(text){const q=text||document.getElementById('input').value;if(!q.trim())return;document.getElementById('input').value='';const d=document.getElementById('messages');d.innerHTML+='<div style="align-self:flex-end"><div class="msg-user">'+q+'</div></div>';d.innerHTML+='<div id="typ" class="typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';d.scrollTop=99999;setTimeout(()=>{document.getElementById('typ')?.remove();const a=findAnswer(q);let h='<div style="align-self:flex-start"><div class="msg-bot">';if(a&&a.t==='v'){h+='<div><span class="severity sev-'+a.sev+'">'+a.sev+'</span><span class="owasp">'+a.ow+'</span></div>';h+='<div class="msg-title">'+a.k.toUpperCase()+'</div><div class="msg-code">'+a.fix+'</div>'}else if(a&&a.t==='l'){h+='<div class="msg-title">'+a.title+'</div>';a.d.forEach(i=>h+='<div class="msg-item'+(i.includes('✅')?' msg-item-ok':'')+'">'+i+'</div>')}else{h+='<div class="msg-title">Help</div><div class="msg-item">Try: SQL Injection, XSS, JWT, CORS, Vault, Trivy, SonarQube, OWASP, Pipeline, RBAC, Network, Canary, Alert</div>'}const sh=[...SUGG].sort(()=>Math.random()-.5).slice(0,4);h+='<div class="suggestions">'+sh.map(s=>'<button class="suggest-btn" onclick="sendMsg(\''+s+'\')">'+s+'</button>').join('')+'</div></div></div>';d.innerHTML+=h;d.scrollTop=99999},800)}
+</script>
+</body>
+</html>
